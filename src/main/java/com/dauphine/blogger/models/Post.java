@@ -6,8 +6,9 @@ public class Post {
     private UUID id;
     private String title;
     private String content;
+    private UUID categoryId;
 
-    public Post(UUID id, String title, String content) {
+    public Post(UUID id, String title, String content, UUID uuid) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -35,5 +36,13 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public UUID getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(UUID categoryId) {
+        this.categoryId = categoryId;
     }
 }
