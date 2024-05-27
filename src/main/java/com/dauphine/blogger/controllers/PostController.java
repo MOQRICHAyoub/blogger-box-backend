@@ -40,6 +40,12 @@ public class PostController {
         return service.getAllByCategoryId(categoryId);
     }
 
+    @GetMapping("/search")
+    @Operation(summary = "Find posts by title or content", description = "Retrieve posts that match the title or content")
+    public List<Post> findAllByTitleOrContent(@RequestParam String value) {
+        return service.findAllByTitleOrContent(value);
+    }
+
     @PostMapping
     @Operation(summary = "Create a new post", description = "Create a new post with a given title, content, and category ID")
     public Post createPost(@RequestParam String title, @RequestParam String content, @RequestParam UUID categoryId) {

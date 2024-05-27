@@ -2,9 +2,9 @@ package com.dauphine.blogger.services;
 
 import com.dauphine.blogger.models.Category;
 import com.dauphine.blogger.repositories.CategoryRepository;
-import com.dauphine.blogger.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -30,23 +30,29 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category create(String name) {
-        Category category = new Category(UUID.randomUUID(), name);
+        Category category = new Category();
+        category.setName(name);
         return repository.save(category);
     }
 
     @Override
     public Category updateName(UUID id, String name) {
         Category category = getById(id);
-        if (category == null) {
-            return null;
+        if (category != null) {
+            category.setName(name);
+            return repository.save(category);
         }
-        category.setName(name);
-        return repository.save(category);
+        return null;
     }
 
     @Override
     public boolean deleteById(UUID id) {
         repository.deleteById(id);
         return true;
+    }
+
+    @Override
+    public List<Category> getAllLikeName(String name) {
+        return repository.findAllLikeName(name);
     }
 }
