@@ -23,7 +23,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> getAllByCategoryId(UUID categoryId) {
         return temporaryPosts.stream()
-                .filter(post -> post.getCategoryId().equals(categoryId))
+                .filter(post -> post.getCategory().equals(categoryId))
                 .collect(Collectors.toList());
     }
 

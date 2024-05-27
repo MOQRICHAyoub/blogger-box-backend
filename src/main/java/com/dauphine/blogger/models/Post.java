@@ -1,12 +1,13 @@
 package com.dauphine.blogger.models;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
-
 public class Post {
     private UUID id;
     private String title;
     private String content;
-    private UUID categoryId;
+    private Category category;
+    private LocalDateTime createdDate;
 
     public Post(UUID id, String title, String content, UUID uuid) {
         this.id = id;
@@ -38,11 +39,8 @@ public class Post {
         this.content = content;
     }
 
-    public UUID getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(UUID categoryId) {
-        this.categoryId = categoryId;
-    }
 }
